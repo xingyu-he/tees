@@ -80,6 +80,14 @@ class Query extends BaseQuery {
     return this._node.url();
   }
 
+  async keyboardPress(key, options = {}){
+    await this._node.keyboard.press(key, options);
+  }
+
+  async bringToFront(){
+    await this._node.bringToFront();
+  }
+  
   async click(selector, options) {
     await this.waitForSelector(selector, options);
     const _selector = this.getSelector(selector, options);

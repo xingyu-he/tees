@@ -87,6 +87,23 @@ class Query extends BaseQuery {
     await this._node.get(url);
   }
 
+  async keyboardPress(key, options = {}){
+    const realKey = {
+      Enter : 'Keys.ENTER',
+      Backspace : 'Keys.SPACE',
+      Shift : 'Keys.SHIFT',
+      Delete : 'Keys.DELETE',
+      Tab : 'Keys.TAB',
+      Control : 'Keys.CONTROL',
+      Alt : 'Keys.ALT'
+      }[key] || '';
+    await this._node.sendKeys(realKey);
+  }
+
+  async bringToFront(){
+    await this._node.bringToFront();
+  }
+
   async clickToGetNewOpenPage(selector, browser, options = {}) {
     await this.click(selector, options);
     await this.waitFor(3000);
